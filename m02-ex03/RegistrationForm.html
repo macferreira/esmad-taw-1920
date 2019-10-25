@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TAW-MOD2-EX3</title>
+</head>
+
+<body>
+    <h1>Registration Form</h1>
+    <form method="post" action="https://www.webucator.com/course-demos/htm101/process-form.cfm">
+        <div>
+            <input type="hidden" name="emailMe" id="emailMe" value="you@you.com">
+
+            <label for="username">User name:</label>
+            <input type="text" name="username" id="username" size="15">
+        </div>
+        <div>
+            <label for="pw">Password:</label>
+            <input type="password" name="pw" id="pw" size="15">
+        </div>
+        <div>
+            Gender:
+            <input type="radio" name="gender" id="genderm" value="m"><label for="genderm">Male</label>
+            <input type="radio" name="gender" id="genderf" value="f"><label for="genderf">Female</label>
+        </div>
+        <div>
+            <label for="terms">Click to accept our terms:</label>
+            <input type="checkbox" name="terms" id="terms">
+        </div>
+        <div>
+            <input type="submit" name="submitbutton" id="submitbutton" value="Register">
+            <input type="reset" name="resetbutton" id="resetbutton">
+        </div>
+    </form>
+</body>
+
+</html>
