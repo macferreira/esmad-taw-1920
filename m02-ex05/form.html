@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TAW-MOD2-EX5-Form</title>
+</head>
+
+<body>
+    <header>
+        <h1>Registration Form</h1>
+    </header>
+
+    <section>
+        <form action="form.html" method="post" id="form1">
+            <fieldset>
+                <legend>Personal info</legend>
+                <div>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" pattern="[A-Z][a-z]+\s[A-Z][a-z]+" required>
+                </div>
+                <div>
+                    <label for="member">Member</label>
+                    <input type="radio" name="membership" id="member" value="member" checked>
+                    <label for="non-member">Non-member</label>
+                    <input type="radio" name="membership" id="non-member" value="non-member">
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email">
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Reservation info</legend>
+                <div>
+                    <label for="facility">Facility</label>
+                    <select name="facility" id=facility>
+                        <option value="badminton">Badminton</option>
+                        <option value="squash">Squash</option>
+                        <option value="racquetball">Racquetball</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="resDateTime">Select a reservation date and time:</label>
+                    <input type="datetime-local" name="resDateTime" id="resDateTime" required>
+                </div>
+                <div>
+                    <input type="checkbox" name="tnc" id="tnc" required>
+                    <label for="tnc"> I agree to the club’s reservation policy</label><br><br>
+                </div>
+            </fieldset>
+        </form>
+
+        <div>
+            <button type="submit" form="form1" value="Submit">Submit</button>
+        </div>
+    </section>
+
+</body>
+
+</html>
