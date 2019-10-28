@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <title>Drag And Drop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <style>
+        .container {
+            width: 960px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .box {
+            background: red;
+            display: inline-block;
+            width: 150px;
+            height: 150px;
+            color: white;
+            text-align: center;
+            line-height: 150px;
+            font-size: 3em;
+        }
+
+        .box.over {
+            background: black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div id="main">
+            <div class="box" draggable="true" id="caixa-A">
+                <header>A</header>
+            </div>
+            <div class="box" draggable="true" id="caixa-B">
+                <header>B</header>
+            </div>
+            <div class="box" draggable="true" id="caixa-C">
+                <header>C</header>
+            </div>
+            <div id="messages"></div>
+        </div>
+    </div>
+    <script>
+
+        // seleccionar todos os elementos com a class .box
+        var boxes = document.querySelectorAll('.box');
+
+        // global para guadar quem está ser arrastado
+        var draggedElem = null;
+
+        // callback a definir para o evento dragstart
+        var dragStartEvent = function dragStartEvent(event) {
+            this.style.color = "blue";
+            // guadar o elemento que está ser arrastado
+            draggedElem = this;
+
+            // guardar os dados que queremos transferir
+            event.dataTransfer.setData('text/html', this.innerHTML);
+            printMessage("dragStartEvent on " + event.target.id);
+        }
+
+        var dragEndEvent = function dragEndEvent(event) {
+            this.style.color = "white";
+
+            // remover as classes, uma vez que o leave pode não ser chamado, qd fazemos drop do elemento
+            [].forEach.call(boxes, function (box) {
+                box.classList.remove('over');
+            });
+
+            printMessage("dragEndEvent on " + event.target.id);
+        }
+
+        var dragEnterEvent = function dragEnterEvent(event) {
+            this.classList.add('over');
+            //printMessage("dragEnterEvent on " + this.getAttribute('id'));
+        }
+
+        var dragOverEvent = function dragOverEvent(event) {
+            // obrigatório, caso contrário não deixa fazer o drop
+            event.preventDefault();
+            printMessage("dragOverEvent on " + this.getAttribute('id'));
+        }
+
+        var dragLeaveEvent = function dragLeaveEvent(event) {
+            this.classList.remove('over');
+            printMessage("dragLeaveEvent on " + this.getAttribute('id'));
+        }
+
+        var dropEvent = function dropEvent(event) {
+            // evita a propagação do evento do DOM
+            event.stopPropagation();
+
+            // verificar se estamos a fazer drop no próprio elemento
+            if (draggedElem != this) {
+                draggedElem.innerHTML = this.innerHTML;
+                this.innerHTML = event.dataTransfer.getData('text/html');
+            }
+
+            printMessage("dropEvent on " + this.getAttribute('id'));
+            return false;
+        }
+
+        window.onload = function () {
+
+            // cast do boxes (que é NodeList) para Array para usar o forEach
+            [].forEach.call(boxes, function (box) {
+                box.addEventListener('dragstart', dragStartEvent, false);
+                box.addEventListener('dragover', dragOverEvent, false);
+                box.addEventListener('dragenter', dragEnterEvent, false);
+                box.addEventListener('dragleave', dragLeaveEvent, false);
+                box.addEventListener('dragend', dragEndEvent, false);
+                box.addEventListener('drop', dropEvent, false);
+            });
+
+
+        }
+
+        var printMessage = function printMessage(msg) {
+            document.getElementById('messages').innerHTML = "<p>" + msg + "</p>" + document.getElementById('messages').innerHTML;
+        }
+    </script>
+</body>
+
+</html>

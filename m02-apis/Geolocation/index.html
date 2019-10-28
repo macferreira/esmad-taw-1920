@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="utf-8">
+        <title>Geolocation</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <style>
+            .container {
+                width: 960px;
+                margin: 0 auto;
+                text-align: center;
+                font-weight: bold;
+                font-size: 2em;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <div class="container">
+            <div id="main">
+                <p>LAT: <span id="lat">...</span></p>
+                <p>LON: <span id="lon">...</span></p>
+            </div>
+        </div>
+        <script>
+            window.onload = function() {
+                navigator.geolocation.getCurrentPosition( function(position) {
+                    document.getElementById('lat').innerHTML = position.coords.latitude;
+                    document.getElementById('lon').innerHTML = position.coords.longitude;
+                }, function(error) {
+                    // error callback
+                });
+            }
+        </script>
+    </body>
+</html>

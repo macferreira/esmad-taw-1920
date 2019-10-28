@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="utf-8">
+        <title>Media</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <style>
+            .container {
+                width: 960px;
+                margin: 0 auto;
+                text-align: center;
+            }        
+        </style>
+    </head>
+    <body>
+        
+        <div class="container">
+            <div id="main">
+                <video id="my-video" controls></video>
+            </div>
+        </div>
+        <script>     
+            navigator.getUserMedia = navigator.getUserMedia ||
+                                    navigator.webkitGetUserMedia ||
+                                    navigator.mozGetUserMedia;
+                                    
+            var errorCallback = function(event) {
+                console.log(event);
+            };
+            
+            navigator.getUserMedia({
+                video: true     // indicar que queremos video
+            }, function(stream) {
+                // seleccionar o video do DOM
+                var videoPlayer = document.getElementById('my-video');
+                // definir a source do video
+                videoPlayer.src = window.URL.createObjectURL(stream);
+            }, errorCallback);
+        </script>
+    </body>
+</html>

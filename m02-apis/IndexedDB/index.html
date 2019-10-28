@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="utf-8">
+        <title>IndexedDB</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <style>
+            .container {
+                width: 960px;
+                margin: 0 auto;
+            }
+            
+            .box {
+                float: left;
+                width: 50%;
+                padding: 0;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <div class="container">
+            <div id="main">
+                <ul id="items" class="box">
+                    
+                </ul>
+                <div class="box">
+                    <input type="text" id="new-item" placeholder="New shopping item" />
+                    <button id="add-item">add shopping item</button>
+                </div>
+            </div>
+        </div>
+        <script>
+            // namespacing para encapsular as funcionalidades da base de dados
+            var tommy = {};
+            tommy.indexedDB = {};
+            
+            // criar atributo para guardar uma referêcia para a bd
+            tommy.indexedDB.db = null;
+            // abrir a base de dados
+            tommy.indexedDB.open = function () {
+            
+                // versão da bd
+                var version = 3;
+                // abrir a bd com nome shoppinglist
+                var request = indexedDB.open("shoppinglist", version);
+                
+                
+                // esta callback é a única que pode alterar a estrutura da base de dados
+                // permitem criar "Object Stores" e criar ou remover índices
+                // caso queiramos alterar a estrutura da base e dados temos que alterar a "version"
+                request.onupgradeneeded = function (event) {
+                    var db = event.target.result;
+                    
+                    // uma transação do tipo "versionchange" é iniciada automaticamente
+                    event.target.transaction.onerror = tommy.indexedDB.onerror;
+                    
+                    if ( db.objectStoreNames.contains("shoppingitem") ) {
+                        db.deleteObjectStore("shoppingitem");
+                    }
+                    
+                    // Criar uma Object Store chamada "shoppingitem"
+                    // segundo parâmetro permite configurar opções da base de dados
+                    // o keyPath define a propriedade que será única e identifica inequivocamente cada item
+                    var objStore = db.createObjectStore("shoppingitem",
+                        {
+                            keyPath: "datahora" 
+                        }
+                    );
+                }
+                
+                
+                // callback de sucesso para o pedido que fizemos
+                // neste caso o onupgradeneeded
+                request.onsuccess = function (event) {
+                    // o parametro event é o "open" que fizemos acima
+                    // guardar referencia para a base de dados que abrimos [!]
+                    tommy.indexedDB.db = event.target.result;
+                    
+                    // agora que abrimos a base de dados com sucesso, podemos ler o seu conteúdo
+                    tommy.indexedDB.getAllShoppingItems();
+                }
+                
+                request.onerror = tommy.indexedDB.onerror;
+            }
+            
+            
+            
+            // como adicionar items à lista
+            tommy.indexedDB.addItem = function (itemText) {
+                // referência à base de dados
+                var db = tommy.indexedDB.db;
+                // indicar que vai ser feito um acesso do tipo readwrite (leitura e escrita)
+                var transaction = db.transaction(["shoppingitem"], "readwrite");
+                // referência à objectStore
+                var objStore = transaction.objectStore("shoppingitem");
+                // datahora atual
+                var now = new Date().getTime();
+                // pedido do tipo "put" para introduzir um novo item
+                var request = objStore.put({
+                    "text": itemText,
+                    "datahora": now
+                });
+                
+                // callback de sucesso ao request do tipo put que fizemos
+                request.onsuccess = function(event) {
+                    
+                    tommy.indexedDB.getAllShoppingItems();
+                }
+                
+                request.onerror = tommy.indexedDB.onerror;
+            }
+            
+            tommy.indexedDB.getAllShoppingItems = function () {
+                // limpar lista atual
+                var itemsList = document.getElementById('items');
+                itemsList.innerHTML = "";
+                
+                // referência local à db
+                var db = tommy.indexedDB.db;
+                // transação de leitura
+                var transaction = db.transaction(["shoppingitem"], "readwrite");
+                // referência para a object store
+                var objStore = transaction.objectStore("shoppingitem");
+                
+                
+                // uma vez que definimos o nosso index (keyPath) como numérico
+                // o lowerBound indica que queremos todos os valores acima de 0
+                var keysRange = IDBKeyRange.lowerBound(0);
+                // referencia ao cursor - iterador que percorrerá toda a lista
+                var cursor = objStore.openCursor(keysRange);
+                
+                // callback de sucesso
+                cursor.onsuccess = function (event) {
+                    var result = event.target.result;
+                    // forçar o cast para boleano e verificar se é falso
+                    if (!!result == false) {
+                        return;
+                    }
+                    
+                    // chamar função de renderização de cada item
+                    renderItem(result.value);
+                    // pedir novo item ao cursor
+                    result.continue();
+                }
+                
+            }
+            
+            // apagar um item
+            tommy.indexedDB.deleteItem = function(id) {
+                var db = tommy.indexedDB.db;
+                var transaction = db.transaction(["shoppingitem"], "readwrite");
+                var objStore = transaction.objectStore("shoppingitem");
+                
+                var request = objStore.delete(id);
+                
+                request.onsuccess = function (event) {
+                    tommy.indexedDB.getAllShoppingItems();
+                }
+                
+                request.onerror = tommy.indexedDB.onerror;
+                
+            }
+            
+            // error logging
+            tommy.indexedDB.onerror = function(error) {
+                console.log(error);
+            }
+            
+            
+            // apenas para renderização
+            var renderItem = function renderItem(item) {
+                var itemsList = document.getElementById('items');
+                
+                // criar item da lista
+                var listItem = document.createElement('li');
+                // criar link
+                var link = document.createElement('a');
+                // criar texto
+                var text = document.createTextNode();
+                // row.X equivale à propriedade X do nosso objeto
+                // no nosso caso é row.text
+                text.data = item.text;
+                
+                // adicionar callback ao link para remover o item
+                link.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    // o delete item recebe o keyPath por parametro
+                    tommy.indexedDB.deleteItem(item.datahora); 
+                });
+                
+                link.textContent = " [Remover]";
+                // adicionar texto do item ao li
+                listItem.appendChild(text);
+                // adicionar link ao li
+                listItem.appendChild(link);
+                // adicionar item à lista
+                itemsList.appendChild(listItem);
+                
+            }
+            
+            window.onload = function() {
+                tommy.indexedDB.open();
+                
+                document.getElementById('add-item').addEventListener('click', function(event) {
+                    var text =  document.getElementById('new-item').value;
+                    
+                    tommy.indexedDB.addItem(text);
+                });  
+                
+            }
+            
+        </script>
+    </body>
+</html>

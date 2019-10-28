@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="utf-8">
+        <title>Local Storage</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <style>
+            .container {
+                width: 960px;
+                margin: 0 auto;
+            }
+            
+            label {
+                display: inline-block;
+                width: 70px;
+            }
+            
+            .ws {
+                width: 200px;
+            }
+            
+        </style>
+    </head>
+    <body>
+        
+        <div class="container">
+            <div id="main">
+                <div class="ws">
+                    <p><label for="name">Nome</label> <input type="text" id="name" placeholder="Nome" /></p>
+                    <p><label for="phone">Telefone</label> <input type="text" id="phone" placeholder="Telefone" /></p>
+                    <p><button id="save-to-storage">Guardar</button></p>
+                    <p><button id="get-from-storage">Listar todos</button></p>
+                    <p id="resultado"><!-- --></p>
+                </div>
+            </div>
+        </div>
+        <script>
+            window.onload = function() {
+                document.getElementById('save-to-storage').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // guardar variável com o valor do campo name
+                    var nome = document.getElementById('name').value;
+                    // guardar variável com o valor do campo phone
+                    var telefone = document.getElementById('phone').value;
+                    // guardar na chave nome, o valor telefone
+                    localStorage.setItem(nome, telefone);
+                    // escrever na div resultado 'Nome da pessoa' guardado
+                    document.getElementById('resultado').innerHTML = nome + ' guardado.';
+                });
+                
+                document.getElementById('get-from-storage').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // percorrer todos os items exsitentes no localStorage e imprimir nome[telefone] para a div resultados
+                    var lista = "";
+                    for (i = 0; i < localStorage.length; i++)   {
+                        console.log(localStorage.key(i) + "=[" + localStorage.getItem(localStorage.key(i)) + "]");
+                        lista += localStorage.key(i) + "=[" + localStorage.getItem(localStorage.key(i)) + "]<br>";
+                    }
+
+                    document.getElementById('resultado').innerHTML = lista;
+                });
+            }
+            
+        </script>
+    </body>
+</html>
