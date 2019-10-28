@@ -177,10 +177,7 @@
                 // criar link
                 var link = document.createElement('a');
                 // criar texto
-                var text = document.createTextNode();
-                // row.X equivale à propriedade X do nosso objeto
-                // no nosso caso é row.text
-                text.data = item.text;
+                var text = document.createTextNode(item.text);
                 
                 // adicionar callback ao link para remover o item
                 link.addEventListener("click", function(e) {
