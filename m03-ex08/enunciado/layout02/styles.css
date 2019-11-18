@@ -1,0 +1,41 @@
+body {
+    min-height: 100vh;
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+body {
+    display: flex;
+}
+
+.col-1 {
+    background: lightgray;
+}
+
+.col-2 {}
+
+.content {}
+
+.content>article {
+    min-height: 60vh;
+}
+
+.content>aside {
+    background: lightgreen;
+}
+
+header,
+footer {
+    background: lightblue;
+    height: 20vh;
+}
+
+header,
+footer,
+article,
+nav,
+aside {
+    padding: 1em;
+}
