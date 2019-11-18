@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <title>Transitions</title>
+    <style>
+        .container {
+            width: 960px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .box {
+            display: inline-block;
+            width: 150px;
+            height: 150px;
+            background: red;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            margin: 100px 25px;
+            font-size: 5em;
+            text-align: center;
+            line-height: 150px;
+            color: white;
+            font-family: Helvetica, sans-serif;
+            vertical-align: top;
+        }
+        
+        .box-1 {
+            /* Add transition here */
+        }
+        
+        .box-1:hover,
+        .box-1.logged-in {
+            background-color: purple;
+        }
+        
+        .box-2 {
+            /* Add transition here */
+        }
+        
+        .box-2:hover {
+            color: black;
+        }
+        
+        .box-3 {
+            /* Add transition here */
+        }
+        
+        .box-3:hover {
+            width: 200px;
+        }
+        
+        .box-4 {
+            /* Add transition here */
+        }
+        
+        .box-4:hover {
+            width: 250px;
+            height: 300px;
+            line-height: 300px;
+            -webkit-transform: rotate(315deg);
+            transform: rotate(315deg);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="box box-1">1</div>
+
+        <div class="box box-2">2</div>
+
+        <div class="box box-3">3</div>
+
+        <div class="box box-4">4</div>
+
+    </div>
+</body>
+
+</html>

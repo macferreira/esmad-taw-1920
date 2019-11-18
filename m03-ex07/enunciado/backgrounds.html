@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <title>Backgrounds</title>
+    <style>
+        .container {
+            width: 960px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .box {
+            display: inline-block;
+            width: 150px;
+            height: 150px;
+            background: rgba(100, 100, 100, 0.5);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            margin: 100px 25px;
+            font-size: 5em;
+            text-align: center;
+            line-height: 150px;
+            color: white;
+            font-family: Helvetica, sans-serif;
+            vertical-align: top;
+        }
+        
+        .box-1 {
+            /* Define background here */
+        }
+        
+        .box-2 {
+            background: -webkit-linear-gradient(to bottom, red, green, blue);
+            background: linear-gradient(to bottom, red, green, blue);
+        }
+        
+        .box-3 {
+            background: linear-gradient(10deg, red, green, blue);
+        }
+        
+        .box-4 {
+            width: 600px;
+            height: 100px;
+            line-height: 100px;
+            margin-top: 0;
+            background-image: -webkit-radial-gradient(0 0, ellipse farthest-corner, /* farthest-corner */
+            aqua, red, blue);
+        }
+        
+        .box-5 {
+            width: 600px;
+            height: 100px;
+            line-height: 100px;
+            margin-top: 0;
+            background-image: -webkit-radial-gradient(0 0, ellipse farthest-corner, aqua, red, blue);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="box box-1">MB</div>
+
+        <div class="box box-2">
+            LG
+        </div>
+
+        <div class="box box-3">
+            LG
+        </div>
+
+        <div class="box box-4">
+            RG
+        </div>
+
+        <div class="box box-5">
+            RG
+        </div>
+
+
+    </div>
+</body>
+
+</html>
