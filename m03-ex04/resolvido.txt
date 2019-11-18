@@ -5,8 +5,8 @@ Resolução para https://flexboxfroggy.com/
 03.  justify-content: space-around;
 04.  justify-content: space-between;
 05.  align-items: flex-end;
-06.  align-items: center;
-     justify-content: center;
+06.  justify-content: center;  
+     align-items: center;
 07.  justify-content: space-around;
      align-items: flex-end;
 08.  flex-direction: row-reverse;
@@ -33,6 +33,7 @@ Resolução para https://flexboxfroggy.com/
 22.  align-content: flex-end;
 23.  flex-direction: column-reverse;
      align-content: center; 
-24.  flex-flow:column-reverse wrap-reverse;
+24.  flex-direction:column-reverse;
+     flex-wrap: wrap-reverse;
      justify-content:center;
      align-content:space-between;
