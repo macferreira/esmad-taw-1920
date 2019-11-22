@@ -22,12 +22,39 @@
             background-color: black;
             font-family: Helvetica, sans-serif;
             vertical-align: top;
+            width: 150px;
+            height: 150px;
+        }
+        
+        @media all and (min-width: 961px) {
+            .box {
+                background-color: rgba(100, 100, 100, 0.5);
+            }
+        }
+        
+        @media all and (max-width: 960px) {
+            .box {
+                background: blue;
+            }
+        }
+        
+        @media all and (max-width: 650px) {
+            .box {
+                width: 100px;
+                height: 100px;
+                line-height: 100px;
+                background: red;
+            }
         }
     </style>
 </head>
 
 <body>
     <div class="container">
+        <div class="box">BOX01</div>
+        <div class="box">BOX02</div>
+        <div class="box">BOX03</div>
+        <div class="box">BOX04</div>
     </div>
 </body>
 
