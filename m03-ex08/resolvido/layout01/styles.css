@@ -1,0 +1,48 @@
+body {
+    min-height: 100vh;
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+}
+
+#main {
+    display: flex;
+    flex-grow: 1;
+}
+
+#main>article {
+    flex: 1;
+    order: 1;
+}
+
+#main>nav,
+#main>aside {
+    flex-basis: 20vw;
+}
+
+#main>nav {
+    background: lightgray;
+    order: -1;
+}
+
+#main>aside {
+    background: lightgreen;
+    order: 2;
+}
+
+header,
+footer {
+    background: lightblue;
+    height: 20vh;
+}
+
+header,
+footer,
+article,
+nav,
+aside {
+    padding: 1em;
+}
