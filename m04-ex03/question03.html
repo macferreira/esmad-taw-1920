@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>TAW-MOD4-EX3-QUESTION3</title>
+</head>
+
+<body>
+    <script>
+        var choices = ["red", "orange", "pink", "yellow"]
+
+        for (var i = 0; i < choices.length; i++) {
+            console.log("My #" + (i + 1) + " choice is " + choices[i])
+        }
+
+        for (var i = 0; i < choices.length; i++) {
+
+            var choiceNum = i + 1
+            var choiceNumSuffix
+
+            if (choiceNum == 1) {
+                choiceNumSuffix = "st"
+            } else if (choiceNum == 2) {
+                choiceNumSuffix = "nd"
+            } else if (choiceNum == 3) {
+                choiceNumSuffix = "rd"
+            } else {
+                choiceNumSuffix = "th"
+            }
+
+            console.log(
+                "My " + choiceNum + choiceNumSuffix + " choice is " + choices[i]
+            )
+        }
+    </script>
+</body>
+
+</html>
