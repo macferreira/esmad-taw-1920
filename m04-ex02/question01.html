@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>TAW-MOD4-EX2-QUESTION1</title>
+</head>
+
+<body>
+    <script>
+        var num1, num2
+        num1 = window.prompt("Input the First integer", "0")
+        num2 = window.prompt("Input the second integer", "0")
+
+        if (parseInt(num1, 10) > parseInt(num2, 10)) {
+            console.log(
+                "The larger of " + num1 + " and " + num2 + " is " + num1 + "."
+            )
+        } else if (parseInt(num2, 10) > parseInt(num1, 10)) {
+            console.log(
+                "The larger of " + num1 + " and " + num2 + " is " + num2 + "."
+            )
+        } else {
+            console.log("The values " + num1 + " and " + num2 + " are equal.")
+        }
+    </script>
+</body>
+
+</html>

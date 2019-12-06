@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>TAW-MOD4-EX2-QUESTION2-Array_Alternative</title>
+</head>
+
+<body>
+    <script>
+        var x = 0
+        var y = -1
+        var z = 4
+
+        var nums = [x, y, z]
+        var sortedNums = nums.sort().reverse()
+        var sortedNumsString = ""
+
+        for (let i = 0; i < nums.length; i++) {
+            if (i !== nums.length - 1) {
+                sortedNumsString += nums[i].toString() + ", "
+            } else {
+                sortedNumsString += nums[i].toString()
+            }
+        }
+        window.alert(sortedNumsString)
+    </script>
+</body>
+
+</html>
