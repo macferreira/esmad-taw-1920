@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>TAW-MOD4-EX4-QUESTION6</title>
+</head>
+
+<body>
+    <label>Square this number: <input type="number" id="square-input" size="2" />
+    </label>
+    <button id="square-button">Calculate</button> <br /><br />
+
+    <label>Half this number: <input type="number" id="half-input" size="2" />
+    </label>
+    <button id="half-button">Calculate</button> <br /><br />
+
+    <label>
+        Fraction: <input type="number" id="percent1-input" size="2" />
+    </label>
+    <label> Whole: <input type="number" id="percent2-input" size="2" /> </label>
+    <button id="percent-button">Calculate</button> <br /><br />
+
+    <label>Calculate area of circle with radius:
+        <input type="number" id="area-input" size="2" />
+    </label>
+    <button id="area-button">Calculate</button> <br /><br />
+    <div id="solution"></div>
+
+    <script>
+        function squareNumber(num) {
+            var squaredNumber = num * num
+            console.log(
+                "The result of squaring the number " + num + " is " + squaredNumber
+            )
+            return squaredNumber
+        }
+        function halfOf(num) {
+            var half = num / 2
+            console.log("Half of " + num + " is " + half)
+            return half
+        }
+        function percentOf(num1, num2) {
+            var percent = (num1 / num2) * 100
+            console.log(num1 + " is " + percent + "% of " + num2)
+            return percent
+        }
+        function areaOfCircle(radius) {
+            var area = Math.PI * squareNumber(radius)
+            console.log("The area of circle with radius " + radius + " is " + area)
+            return area
+        }
+    </script>
+</body>
+
+</html>
