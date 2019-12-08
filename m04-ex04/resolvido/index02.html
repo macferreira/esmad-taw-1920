@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>TAW-MOD4-EX4-QUESTION2</title>
+</head>
+
+<body>
+    <form id="form1" onsubmit="return getFormvalue()">
+        First name: <input type="text" name="fname" value="John" /><br />
+        Last name: <input type="text" name="lname" value="Doe" /><br />
+        <input type="submit" value="Submit" />
+    </form>
+    <script>
+        function getFormvalue() {
+
+            var x = document.getElementById("form1")
+
+            for (var i = 0; i < x.length; i++) {
+                if (x.elements[i].value != "Submit") {
+                    console.log(x.elements[i].value)
+                }
+            }
+
+            return false
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>TAW-MOD4-EX4-QUESTION3</title>
+    <style>
+        .listitem {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>About Me</h1>
+
+    <ul>
+        <li>Name: <span id="nickname">Joe Bloggs</span></li>
+        <li>Age: <span id="age">25</span></li>
+        <li>Hometown: <span id="hometown">Paris</span></li>
+    </ul>
+    <script>
+        document.getElementById("nickname").innerHTML = "John Doe"
+        document.getElementById("age").innerHTML = "30"
+        document.getElementById("hometown").innerHTML = "London"
+
+        var items = document.getElementsByTagName("li")
+
+        for (var i = 0; i < items.length; i++) {
+            items[i].className = "listitem"
+        }
+
+        var image = document.createElement("img")
+        image.src = "http://placekitten.com/200/300"
+        document.body.appendChild(image)
+    </script>
+</body>
+
+</html>
