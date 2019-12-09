@@ -1,0 +1,34 @@
+body {
+    width: 60em;
+    margin: 0 auto;
+  }
+  
+  form {
+    display: flex;
+    justify-content: space-between;
+    background-color: teal;
+    color: white;
+    padding: 1em;
+    margin-top: 1em;
+  }
+  
+  table {
+    background-color: gold;
+    width: 100%;
+    margin-top: 1em;
+  }
+  
+  th,
+  td {
+    padding: 1em;
+    text-align: center;
+  }
+  
+  th:first-child,
+  td:first-child {
+    text-align: left;
+  }
+  
+  footer {
+    margin: 1em 0;
+  }
