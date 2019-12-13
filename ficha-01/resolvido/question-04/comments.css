@@ -1,0 +1,62 @@
+#comments {
+    margin: 1em;
+  }
+  
+  
+  #comments .user {
+    font-style: italic;
+  }
+  
+  #comments .user:after {
+    font-style: normal;
+    content: ' said:';
+  }
+  
+  #comments .date {
+    float: right;
+  }
+  
+  #comments p {
+    background-color: #edeff0;
+    padding: 1em;
+  }
+  
+  #comments p:before {
+    content: '\201C';
+    font-size: 3em;
+    position: relative;
+    top: 15px;
+    color: #ccc;
+  }
+  
+  #comments form {
+    width: auto;
+    margin: 0;
+    background-color: #edeff0;
+  }
+  
+  #comments input {
+    background-color: #edeff0;
+  }
+  
+  #comments textarea {
+    display: block;
+    width: 100%;
+    height: 6em;
+  }
+  
+  #comments input[type=submit] {
+    width: auto;
+  
+    background-color: black;
+    color: white;
+  
+    border: none;
+    margin: 1em;
+    padding: 1em;
+    margin-left: auto;
+  }
+  
+  #comments form h2 {
+    font-size: 1em;
+  }

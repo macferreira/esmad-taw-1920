@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>New User Form</title>
+</head>
+
+<body>
+    <form action="index.html" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+
+        <fieldset>
+            <legend>Age</legend>
+            <label for="age-0-18">&lt;18</label>
+            <input type="radio" id="age-0-18" name="age" value="-18">
+
+            <label for="age-19-35">19-35</label>
+            <input type="radio" name="age" value="19-35">
+
+            <label for="age-36-48">36-48</label>
+            <input type="radio" id="age-36-48" name="age" value="36-48">
+            <label>
+                <input type="radio" name="age" value="49+">&gt;49
+            </label>
+        </fieldset>
+        <label>Profession:
+            <input type="text" name="profession">
+        </label>
+        <label>Country:
+            <select name="country">
+                <option value="portugal">Portugal</option>
+                <option value="spain">Spain</option>
+                <option value="france">France</option>
+                <option value="italy">Italy</option>
+                <option value="greece">Greece</option>
+            </select>
+        </label>
+        <fieldset>
+            <legend>Interests</legend>
+            <label>
+                <input type="checkbox" name="interest" value="photography">Photography
+            </label>
+            <label>
+                <input type="checkbox" name="interest" value="music">Music
+            </label>
+            <label>
+                <input type="checkbox" name="interest" value="cinema">Cinema
+            </label>
+            <label>
+                <input type="checkbox" name="interest" value="computers">Computers
+            </label>
+        </fieldset>
+        <label>
+            How did you find about us:
+            <textarea name="how" cols="40" rows="5"></textarea>
+        </label>
+    </form>
+</body>
+
+</html>
