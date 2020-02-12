@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ex2</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 10vh;
+        }
+        .container > div {
+            padding: 20px;
+            font-size: 60px;
+            font-weight: bold;
+            color: white;
+        }
+        .container > :nth-child(1) {
+            background-color: red;;
+        }
+        .container > :nth-child(2) {
+            background-color: yellow;
+            color: black;
+        }
+        .container > :nth-of-type(3) {
+            background-color: green;
+        }
+        .spacer {
+            height: 80vh;
+        }
+        .footer {
+            height: 10vh;
+            display: flex;
+            align-items: flex-end; 
+        }
+        .footer > div {
+            width: 100vw;
+            padding: 20px;
+            font-size: 60px;
+            font-weight: bold;
+            color: white;
+            background-color: black;
+            text-align: center; 
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div>Home</div>
+        <div>About</div>
+        <div>Services</div>
+    </div>
+    <div class="spacer"></div>
+    <div class="footer">
+        <div>Footer</div>
+    </div>
+</body>
+
+</html>
